@@ -273,14 +273,29 @@ input[type="checkbox"]:checked + label {
     display: none;
 }
 
-/* Animation de la flèche */
+/* Positionner la flèche #toggle-player à gauche */
 #toggle-player {
-    transition: transform 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Déplacer la flèche à 10px du bord gauche */
+    transform: translateY(-50%); /* Centrer verticalement */
+    font-size: 30px;
+    color: #fff; /* Changer la couleur si nécessaire */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Ajouter une animation pour la fluidité */
 }
 
-#audio-player.collapsed #toggle-player {
-    transform: rotate(180deg);
+/* Ajouter une animation au passage du lecteur de gauche à droite */
+#mp3-player.shrunk {
+    transform: scale(0.8); /* Réduire la taille du lecteur */
+    transition: transform 0.3s ease-in-out;
 }
+
+#mp3-player.enlarged {
+    transform: scale(1); /* Taille normale du lecteur */
+    transition: transform 0.3s ease-in-out;
+}
+
 
 /* Assurez-vous que le lecteur MP3 est contenu dans son conteneur */
 #mp3-player {
@@ -355,3 +370,32 @@ input[type="checkbox"]:checked + label {
 #mp3-player {
     overflow: hidden; /* Cache tout ce qui dépasse du conteneur */
 }
+
+/* Cacher le texte tout en le rendant cliquable */
+#music-title-container {
+    position: relative;
+  }
+  
+  #music-title {
+    font-size: 20px;
+    color: transparent; /* Le texte sera invisible */
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%; /* Cela s'adapte à toute la largeur */
+    height: 100%; /* Assurez-vous qu'il recouvre tout le titre */
+  }
+  
+  /* Quand le lecteur est rétréci */
+  #mp3-player.shrunk {
+    transform: scale(0.8); /* Réduit la taille du lecteur */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Quand le lecteur est agrandi */
+  #mp3-player.enlarged {
+    transform: scale(1); /* Taille normale du lecteur */
+    transition: transform 0.3s ease-in-out;
+  }
+  
