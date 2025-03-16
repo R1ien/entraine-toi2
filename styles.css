@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: red;
+}
+
+#chrono {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#exception-message {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#container {
+    width: 50%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #333;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: darkred;
+}
+
+#edit-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+#audio-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+#track-info {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#progress-bar {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#time-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#controls {
+    display: flex;
+    gap: 15px;
+}
+
+#controls button {
+    background: #333;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#controls button:hover {
+    background: #555;
+}
+
+/* Styles pour mobile uniquement */
+@media screen and (max-width: 768px) {
+    #audio-player {
+        width: 90%;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        padding: 10px;
+    }
+
+    #track-info {
+        font-size: 14px;
+    }
+
+    #progress-bar {
+        height: 4px;
+    }
+
+    #time-info {
+        font-size: 12px;
+    }
+
+    #controls {
+        gap: 10px;
+    }
+
+    #controls button {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
