@@ -282,28 +282,93 @@ input[type="checkbox"]:checked + label {
     transform: rotate(180deg);
 }
 
+/* Animation de base (pour les grands écrans PC) */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Exemple d'animation appliquée aux boutons et éléments du lecteur */
+#player-controls {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+/* Animation d'apparition du titre de la musique */
+#music-title {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Styles pour mobile - utiliser une animation différente pour les petits écrans */
 @media (max-width: 768px) {
+    /* Réduire l'animation du lecteur MP3 sur mobile */
     #player-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        animation: slideInFromLeft 0.8s ease-out;
     }
 
-    #player-controls button {
-        margin: 5px 0;
-        font-size: 14px;  /* Réduit la taille de la police */
-        padding: 8px;
+    /* Animation de la musique sur mobile */
+    #music-title {
+        animation: fadeIn 1.5s ease-in-out;
     }
 
-    #player-controls input[type="text"] {
-        width: 80%;
-        margin-bottom: 10px;
-        font-size: 14px; /* Réduit la taille du texte pour mobile */
-    }
-
-    /* Adaptation du timer */
+    /* Animation du timer sur mobile */
     #timer {
-        font-size: 20px;
-        margin-bottom: 10px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Réduire l'animation de l'interface pour mobile */
+    #player-controls button {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    /* Réduire la taille et les animations de la barre de progression */
+    #progress-bar {
+        animation: fadeIn 1.2s ease-in-out;
+    }
+}
+
+/* Animation de rétrécissement du lecteur MP3 */
+@keyframes shrinkPlayer {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.8); /* On réduit la taille du lecteur sur mobile */
+    }
+}
+
+/* Animation d'agrandissement du lecteur MP3 */
+@keyframes enlargePlayer {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Réduire et agrandir le lecteur MP3 sur mobile */
+@media (max-width: 768px) {
+    #mp3-player {
+        animation: shrinkPlayer 0.3s ease-in-out; /* Réduire sur mobile */
+    }
+
+    /* Quand le lecteur est agrandi */
+    .enlarge-player {
+        animation: enlargePlayer 0.3s ease-in-out;
     }
 }
