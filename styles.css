@@ -1,0 +1,283 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: red;
+}
+
+#chrono {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#exception-message {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#container {
+    width: 50%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #333;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: darkred;
+}
+
+#edit-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+#audio-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+#track-info {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#progress-bar {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#time-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#controls {
+    display: flex;
+    gap: 15px;
+}
+
+#controls button {
+    background: #333;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#controls button:hover {
+    background: #555;
+}
+
+/* Styles pour mobile uniquement */
+@media screen and (max-width: 768px) {
+    #audio-player {
+        width: 90%;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        padding: 10px;
+    }
+
+    #track-info {
+        font-size: 14px;
+    }
+
+    #progress-bar {
+        height: 4px;
+    }
+
+    #time-info {
+        font-size: 12px;
+    }
+
+    #controls {
+        gap: 10px;
+    }
+
+    #controls button {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#toggle-player {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#audio-player.collapsed {
+    height: 40px;
+    overflow: hidden;
+}
+
+#audio-player.collapsed #progress-bar,
+#audio-player.collapsed #time-info,
+#audio-player.collapsed #controls {
+    display: none;
+}
+
+/* Effet d'apparition des éléments */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applique l'effet d'apparition */
+body, #audio-player, #training-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animation au survol des boutons */
+button {
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animation du lecteur audio (réduction/agrandissement fluide) */
+#audio-player {
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+#audio-player.collapsed {
+    opacity: 0.8;
+}
+
+/* Effet sur les exercices cochés */
+input[type="checkbox"]:checked + label {
+    transition: color 0.3s, text-decoration 0.3s;
+    color: #4CAF50;
+    text-decoration: line-through;
+}
+
+/* Animation des changements de répétitions */
+@keyframes flash {
+    0% { background-color: rgba(255, 255, 255, 0.2); }
+    100% { background-color: transparent; }
+}
+
+.modified {
+    animation: flash 0.5s ease;
+}
+
+/* Animation du bouton "Exceptionnellement je ne fais pas l'entraînement" */
+#skip-training {
+    transition: background 0.3s, transform 0.2s;
+}
+
+#skip-training:hover {
+    transform: scale(1.1);
+    background: #ff4d4d;
+}
+
+/* Animation du message quand on saute un entraînement */
+#skip-message {
+    animation: fadeIn 0.6s ease;
+}
+
+/* Transition fluide pour l'agrandissement/réduction */
+#audio-player {
+    transition: height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Style du lecteur en mode réduit */
+#audio-player.collapsed {
+    height: 40px;
+    opacity: 0.8;
+    transform: translateY(10px);
+}
+
+/* Cache les éléments du lecteur en mode réduit */
+#audio-player.collapsed #progress-bar,
+#audio-player.collapsed #time-info,
+#audio-player.collapsed #controls {
+    display: none;
+}
+
+/* Animation de la flèche */
+#toggle-player {
+    transition: transform 0.3s ease;
+}
+
+#audio-player.collapsed #toggle-player {
+    transform: rotate(180deg);
+}
