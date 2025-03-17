@@ -226,3 +226,16 @@ window.addEventListener("load", function () {
     }
 });
 
+window.addEventListener("load", function () {
+    if ("standalone" in window.navigator && window.navigator.standalone) {
+        // Mode iOS standalone activé → assure le scroll
+        document.documentElement.style.overflowY = "auto";
+        document.body.style.overflowY = "auto";
+    } else {
+        // Mode normal (PC, Android) → garde le comportement par défaut
+        document.documentElement.style.overflowY = "";
+        document.body.style.overflowY = "";
+    }
+});
+
+

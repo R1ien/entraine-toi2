@@ -425,15 +425,27 @@ html, body {
 }
 
 /* Pour les appareils en mode standalone (installé sur iOS) */
-@media (display-mode: standalone), 
-  screen and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+
+
+/* Activer le scroll en mode standalone (installé sur iOS) */
+@media (display-mode: standalone) {
     html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: black;
-        overflow: hidden;
+        height: auto;  /* Permet le scroll */
+        overflow-y: auto; /* Active le scroll vertical */
+        -webkit-overflow-scrolling: touch; /* Ajoute le scroll fluide sur iOS */
     }
 }
 
+/* Permet le scroll sur toutes les plateformes */
+html, body {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+}
+
+/* Spécifique au mode standalone iOS */
+@media (display-mode: standalone) {
+    html, body {
+        height: auto;
+    }
+}
