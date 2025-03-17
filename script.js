@@ -218,3 +218,11 @@ window.addEventListener("load", function () {
     }
 });
 
+window.addEventListener("load", function () {
+    if (window.navigator.standalone) {
+        // Corrige le problème de scroll en s'assurant que le body peut défiler
+        document.body.style.overflowY = "auto";
+        document.documentElement.style.overflowY = "auto";
+    }
+});
+
