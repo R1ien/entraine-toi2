@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Activer le mode plein écran sur iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Entraînement">
+    <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entraînement Quotidien</title>
@@ -45,6 +50,17 @@
             <button id="next-track">⏩</button>
         </div>
     </div>
+    <div id="mp3-player">
+        <div id="music-title-container">
+          <span id="music-title" class="clickable"></span>
+        </div>
+        <!-- autres éléments du lecteur MP3 -->
+      </div>
+      <div id="completion-message" style="display: none;">
+        <p>Entraînement terminé ! Toutes les cases sont cochées.</p>
+        <p>Sanction : Les répétitions sont doublées pour demain !</p>
+    </div>
+    
     
     
     <script src="player.js"></script>

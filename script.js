@@ -164,3 +164,57 @@ window.onload = () => {
     loadExercises();
     startTimer();
 };
+
+// Sélectionner l'élément titre et le lecteur MP3
+const musicTitle = document.getElementById("music-title");
+const mp3Player = document.getElementById("mp3-player");
+
+// Ajouter un écouteur d'événement pour l'élément titre
+musicTitle.addEventListener("click", () => {
+    // Vérifier si le lecteur a la classe 'enlarged' ou non
+    if (mp3Player.classList.contains("enlarged")) {
+        // Si le lecteur est agrandi, on le rétrécit
+        mp3Player.classList.remove("enlarged");
+        mp3Player.classList.add("shrunk");
+    } else {
+        // Sinon, on l'agrandit
+        mp3Player.classList.remove("shrunk");
+        mp3Player.classList.add("enlarged");
+    }
+});
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+        .then(() => console.log("Service Worker enregistré"))
+        .catch((err) => console.log("Erreur Service Worker:", err));
+}
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log("L'application est en mode standalone");
+} else {
+    console.log("L'application est ouverte depuis un navigateur");
+}
+
+window.addEventListener("load", function () {
+    if (navigator.standalone) {
+        console.log("L'application est en mode standalone sur iOS");
+    } else if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+        // Afficher un message pour dire à l'utilisateur d'ajouter l'application
+        const addToHomeScreen = document.createElement("div");
+        addToHomeScreen.innerHTML = `
+            <div id="a2hs-message" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: white; color: black; padding: 10px; border-radius: 5px; text-align: center;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3); font-size: 14px;">
+                📌 Pour ajouter cette application sur l'écran d'accueil : <br>
+                <strong>Appuie sur "Partager" puis "Ajouter à l'écran d'accueil".</strong>
+                <button id="close-a2hs" style="display: block; margin-top: 5px; background: black; color: white;
+                border: none; padding: 5px; cursor: pointer;">OK</button>
+            </div>
+        `;
+        document.body.appendChild(addToHomeScreen);
+
+        document.getElementById("close-a2hs").addEventListener("click", function () {
+            document.getElementById("a2hs-message").style.display = "none";
+        });
+    }
+});
+

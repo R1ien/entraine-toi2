@@ -399,3 +399,41 @@ input[type="checkbox"]:checked + label {
     transition: transform 0.3s ease-in-out;
   }
   
+  #completion-message {
+    font-size: 20px;
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #e0ffe0;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Caché par défaut */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    overflow: hidden;
+}
+
+@media (display-mode: standalone) {
+    body {
+        background-color: black;
+    }
+}
+
+/* Pour les appareils en mode standalone (installé sur iOS) */
+@media (display-mode: standalone), 
+  screen and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+    html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        overflow: hidden;
+    }
+}
+
